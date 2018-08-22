@@ -1,6 +1,5 @@
-#Alunos: Lucas da Silva Nolasco e Wagner R. Ulian Agostinho
-
 # -*- coding: utf-8 -*-
+#Alunos: Lucas da Silva Nolasco e Wagner R. Ulian Agostinho
 
 # Form implementation generated from reading ui file 'ModeloQTDesigner.ui'
 #
@@ -12,7 +11,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 #Funcao que converte strings para uma string de numeros binarios.
 def toBin(st):
-    return (' '.join(format(ord(x), 'b') for x in str(st)))
+    string = ''
+    for x in st:
+        string +=  format(ord(x), 'b') + " "
+    
+    return string
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
