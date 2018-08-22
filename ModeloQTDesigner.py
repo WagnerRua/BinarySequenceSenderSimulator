@@ -2,104 +2,91 @@
 
 # Form implementation generated from reading ui file 'ModeloQTDesigner.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created by: PyQt5 UI code generator 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName(_fromUtf8("MainWindow"))
+        MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
-        self.centralwidget = QtGui.QWidget(MainWindow)
-        self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.messageEditor = QtGui.QLineEdit(self.centralwidget)
-        self.messageEditor.setObjectName(_fromUtf8("messageEditor"))
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.messageEditor = QtWidgets.QLineEdit(self.centralwidget)
+        self.messageEditor.setObjectName("messageEditor")
         self.horizontalLayout.addWidget(self.messageEditor)
-        self.sendMessageButton = QtGui.QPushButton(self.centralwidget)
-        self.sendMessageButton.setObjectName(_fromUtf8("sendMessageButton"))
+        self.sendMessageButton = QtWidgets.QPushButton(self.centralwidget)
+        self.sendMessageButton.setObjectName("sendMessageButton")
         self.horizontalLayout.addWidget(self.sendMessageButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.line_3 = QtGui.QFrame(self.centralwidget)
-        self.line_3.setFrameShape(QtGui.QFrame.HLine)
-        self.line_3.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line_3.setObjectName(_fromUtf8("line_3"))
+        self.line_3 = QtWidgets.QFrame(self.centralwidget)
+        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_3.setObjectName("line_3")
         self.verticalLayout.addWidget(self.line_3)
-        self.messageLabel = QtGui.QLabel(self.centralwidget)
+        self.messageLabel = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setBold(True)
         font.setItalic(True)
         font.setWeight(75)
         self.messageLabel.setFont(font)
-        self.messageLabel.setText(_fromUtf8(""))
-        self.messageLabel.setObjectName(_fromUtf8("messageLabel"))
+        self.messageLabel.setText("")
+        self.messageLabel.setObjectName("messageLabel")
         self.verticalLayout.addWidget(self.messageLabel)
-        self.line = QtGui.QFrame(self.centralwidget)
-        self.line.setFrameShape(QtGui.QFrame.HLine)
-        self.line.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line.setObjectName(_fromUtf8("line"))
+        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
         self.verticalLayout.addWidget(self.line)
-        self.binaryLabel = QtGui.QLabel(self.centralwidget)
-        self.binaryLabel.setText(_fromUtf8(""))
-        self.binaryLabel.setObjectName(_fromUtf8("binaryLabel"))
+        self.binaryLabel = QtWidgets.QLabel(self.centralwidget)
+        self.binaryLabel.setText("")
+        self.binaryLabel.setObjectName("binaryLabel")
         self.verticalLayout.addWidget(self.binaryLabel)
-        self.line_2 = QtGui.QFrame(self.centralwidget)
-        self.line_2.setFrameShape(QtGui.QFrame.HLine)
-        self.line_2.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line_2.setObjectName(_fromUtf8("line_2"))
+        self.line_2 = QtWidgets.QFrame(self.centralwidget)
+        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setObjectName("line_2")
         self.verticalLayout.addWidget(self.line_2)
-        self.encodedLabel = QtGui.QLabel(self.centralwidget)
-        self.encodedLabel.setText(_fromUtf8(""))
-        self.encodedLabel.setObjectName(_fromUtf8("encodedLabel"))
+        self.encodedLabel = QtWidgets.QLabel(self.centralwidget)
+        self.encodedLabel.setText("")
+        self.encodedLabel.setObjectName("encodedLabel")
         self.verticalLayout.addWidget(self.encodedLabel)
-        self.line_4 = QtGui.QFrame(self.centralwidget)
-        self.line_4.setFrameShape(QtGui.QFrame.HLine)
-        self.line_4.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line_4.setObjectName(_fromUtf8("line_4"))
+        self.line_4 = QtWidgets.QFrame(self.centralwidget)
+        self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_4.setObjectName("line_4")
         self.verticalLayout.addWidget(self.line_4)
-        self.graphicsView = QtGui.QGraphicsView(self.centralwidget)
-        self.graphicsView.setObjectName(_fromUtf8("graphicsView"))
+        self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
+        self.graphicsView.setObjectName("graphicsView")
         self.verticalLayout.addWidget(self.graphicsView)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
-        self.menubar.setObjectName(_fromUtf8("menubar"))
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtGui.QStatusBar(MainWindow)
-        self.statusbar.setObjectName(_fromUtf8("statusbar"))
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "Comunicação De Dados", None))
-        self.sendMessageButton.setText(_translate("MainWindow", "Send Message", None))
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "Comunicação De Dados"))
+        self.sendMessageButton.setText(_translate("MainWindow", "Send Message"))
 
 
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
-    MainWindow = QtGui.QMainWindow()
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
