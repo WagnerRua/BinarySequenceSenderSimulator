@@ -86,7 +86,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="PlotWidget" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -102,6 +102,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

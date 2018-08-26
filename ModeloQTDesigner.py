@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from pyqtgraph import PlotWidget
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -62,7 +63,7 @@ class Ui_MainWindow(object):
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.verticalLayout.addWidget(self.line_4)
-        self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
+        self.graphicsView = PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.verticalLayout.addWidget(self.graphicsView)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -82,7 +83,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Comunicação De Dados"))
         self.sendMessageButton.setText(_translate("MainWindow", "Send Message"))
 
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -91,4 +91,5 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
 
