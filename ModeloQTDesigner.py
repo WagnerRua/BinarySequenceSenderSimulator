@@ -7,7 +7,6 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from pyqtgraph import PlotWidget
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -22,15 +21,30 @@ class Ui_MainWindow(object):
         self.messageEditor = QtWidgets.QLineEdit(self.centralwidget)
         self.messageEditor.setObjectName("messageEditor")
         self.horizontalLayout.addWidget(self.messageEditor)
-        self.sendMessageButton = QtWidgets.QPushButton(self.centralwidget)
-        self.sendMessageButton.setObjectName("sendMessageButton")
-        self.horizontalLayout.addWidget(self.sendMessageButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.line_3 = QtWidgets.QFrame(self.centralwidget)
-        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_3.setObjectName("line_3")
-        self.verticalLayout.addWidget(self.line_3)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.checkBoxNRZ = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBoxNRZ.setObjectName("checkBoxNRZ")
+        self.horizontalLayout_5.addWidget(self.checkBoxNRZ)
+        self.checkBoxNRZ_L = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBoxNRZ_L.setObjectName("checkBoxNRZ_L")
+        self.horizontalLayout_5.addWidget(self.checkBoxNRZ_L)
+        self.checkBoxNRZ_I = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBoxNRZ_I.setObjectName("checkBoxNRZ_I")
+        self.horizontalLayout_5.addWidget(self.checkBoxNRZ_I)
+        self.checkBoxZR = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBoxZR.setObjectName("checkBoxZR")
+        self.horizontalLayout_5.addWidget(self.checkBoxZR)
+        self.pushButtonMessage = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButtonMessage.setObjectName("pushButtonMessage")
+        self.horizontalLayout_5.addWidget(self.pushButtonMessage)
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
+        self.line_1 = QtWidgets.QFrame(self.centralwidget)
+        self.line_1.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_1.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_1.setObjectName("line_1")
+        self.verticalLayout.addWidget(self.line_1)
         self.messageLabel = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setBold(True)
@@ -40,20 +54,20 @@ class Ui_MainWindow(object):
         self.messageLabel.setText("")
         self.messageLabel.setObjectName("messageLabel")
         self.verticalLayout.addWidget(self.messageLabel)
-        self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
-        self.verticalLayout.addWidget(self.line)
-        self.binaryLabel = QtWidgets.QLabel(self.centralwidget)
-        self.binaryLabel.setText("")
-        self.binaryLabel.setObjectName("binaryLabel")
-        self.verticalLayout.addWidget(self.binaryLabel)
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.verticalLayout.addWidget(self.line_2)
+        self.binaryLabel = QtWidgets.QLabel(self.centralwidget)
+        self.binaryLabel.setText("")
+        self.binaryLabel.setObjectName("binaryLabel")
+        self.verticalLayout.addWidget(self.binaryLabel)
+        self.line_3 = QtWidgets.QFrame(self.centralwidget)
+        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_3.setObjectName("line_3")
+        self.verticalLayout.addWidget(self.line_3)
         self.encodedLabel = QtWidgets.QLabel(self.centralwidget)
         self.encodedLabel.setText("")
         self.encodedLabel.setObjectName("encodedLabel")
@@ -81,7 +95,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Comunicação De Dados"))
-        self.sendMessageButton.setText(_translate("MainWindow", "Send Message"))
+        self.checkBoxNRZ.setText(_translate("MainWindow", "NRZ"))
+        self.checkBoxNRZ_L.setText(_translate("MainWindow", "NRZ-L"))
+        self.checkBoxNRZ_I.setText(_translate("MainWindow", "NRZ-I"))
+        self.checkBoxZR.setText(_translate("MainWindow", "ZR"))
+        self.pushButtonMessage.setText(_translate("MainWindow", "Send Message"))
+
+from pyqtgraph import PlotWidget
 
 if __name__ == "__main__":
     import sys
@@ -91,5 +111,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
 

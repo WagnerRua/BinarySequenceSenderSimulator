@@ -20,8 +20,40 @@
       <item>
        <widget class="QLineEdit" name="messageEditor"/>
       </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
-       <widget class="QPushButton" name="sendMessageButton">
+       <widget class="QCheckBox" name="checkBoxNRZ">
+        <property name="text">
+         <string>NRZ</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxNRZ_L">
+        <property name="text">
+         <string>NRZ-L</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxNRZ_I">
+        <property name="text">
+         <string>NRZ-I</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxZR">
+        <property name="text">
+         <string>ZR</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonMessage">
         <property name="text">
          <string>Send Message</string>
         </property>
@@ -30,7 +62,7 @@
      </layout>
     </item>
     <item>
-     <widget class="Line" name="line_3">
+     <widget class="Line" name="line_1">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -51,7 +83,7 @@
      </widget>
     </item>
     <item>
-     <widget class="Line" name="line">
+     <widget class="Line" name="line_2">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -65,7 +97,7 @@
      </widget>
     </item>
     <item>
-     <widget class="Line" name="line_2">
+     <widget class="Line" name="line_3">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
