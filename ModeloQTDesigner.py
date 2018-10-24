@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ModeloQTDesigner.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.2
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -52,6 +52,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.messageLabel.setFont(font)
         self.messageLabel.setText("")
+        self.messageLabel.setWordWrap(True)
         self.messageLabel.setObjectName("messageLabel")
         self.verticalLayout.addWidget(self.messageLabel)
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
@@ -61,6 +62,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.line_2)
         self.binaryLabel = QtWidgets.QLabel(self.centralwidget)
         self.binaryLabel.setText("")
+        self.binaryLabel.setWordWrap(True)
         self.binaryLabel.setObjectName("binaryLabel")
         self.verticalLayout.addWidget(self.binaryLabel)
         self.line_3 = QtWidgets.QFrame(self.centralwidget)
@@ -70,6 +72,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.line_3)
         self.encodedLabel = QtWidgets.QLabel(self.centralwidget)
         self.encodedLabel.setText("")
+        self.encodedLabel.setWordWrap(True)
         self.encodedLabel.setObjectName("encodedLabel")
         self.verticalLayout.addWidget(self.encodedLabel)
         self.line_4 = QtWidgets.QFrame(self.centralwidget)
@@ -95,7 +98,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Comunicação De Dados"))
-        self.checkBoxNRZ.setText(_translate("MainWindow", "NRZ"))
+        self.checkBoxNRZ.setText(_translate("MainWindow", "NRZ Unipolar"))
         self.checkBoxNRZ_L.setText(_translate("MainWindow", "NRZ-L"))
         self.checkBoxNRZ_I.setText(_translate("MainWindow", "NRZ-I"))
         self.checkBoxZR.setText(_translate("MainWindow", "ZR"))
