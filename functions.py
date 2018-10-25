@@ -22,69 +22,96 @@ def sendMessageSocket(message):
 def toBin(st, withSpace):
     string = ''
     #Coloca um espaco no final de cada conjunto de bits que correponde a uma letra
-    if withSpace == 1:
+    if withSpace == True:
         for x in st:
             string += format(ord(x), 'b') + " "
     #Sem espaco no final, usado para gerar o gráfico
-    elif withSpace == 0:
+    elif withSpace == False:
         for x in st:
             string += format(ord(x), 'b')
 
     return string
 
 def encodeNRZLevel(message):
-    encoded_message = []
-    for character in message:
-        if character == '1':
-            encoded_message.append('-1')
-        elif character == '0':
-            encoded_message.append('1')
+    encoded_signal = []
+    for bit in message:
+        if bit == '1':
+            encoded_signal.append('-1')
         else:
-            encoded_message.append(character)
+            encoded_signal.append('1')
     
-    return ''.join(encoded_message)
+    return encoded_signal
 
-def decodeNRZLevel(message):
+def decodeNRZLevel(signal):
     decoded_message = []
-    past_character = None
-    for character in message:
-        if past_character == '-': # If is -1 then the past character have to be '-'
+    for sig in signal:
+        if sig == '-1':
             decoded_message.append('1')
-        elif character == '1':
+        else:
             decoded_message.append('0')
-        past_character = character
 
-    return ''.join(decoded_message)
+    return decoded_message
 
 
 def encodeNRZInvert(message):
-    encoded_message = []
-    first_character = False
-    for character in message:
-        if first_character == False:
-            first_character = True
-            signal = 1
+    encoded_signal = []
+    first_bit = False
+    for bit in message:
+        if first_bit == False:
+            first_bit = True
+            if bit == '1':
+                signal = -1
+            else:
+                signal = 1
         else:
-            if character == '1':
+            if bit == '1':
                 signal = signal*(-1)
 
-        encoded_message.append(signal)
+        encoded_signal.append(signal)
 
-    return ''.join(str(e) for e in encoded_message)
+    encoded_signal = [str(e) for e in encoded_signal]
+    return encoded_signal
 
-def decodeNRZInvert(signals):
+def decodeNRZInvert(signal):
     decoded_message = []
-    first_character = False
-    past_character = None
-    for signal in signals:
-        if first_character == False:
-            first_character = True
-            signal = character
+    first_sig = False
+    past_sig = None
+    for sig in signal:
+        if first_sig == False:
+            first_sig = True
+            if sig == '1':
+                bit = '0'
+            else:
+                bit = '1'
         else:
-            if character == '1':
-                signal = signal*(-1)
-
+            if sig == past_sig:
+                bit = '0'
+            else:
+                bit = '1'
+        
         decoded_message.append(bit)
-        past_character = character
+        past_sig = sig
 
-    return encoded_message
+    return decoded_message
+
+def encodeRZ(message):
+    encoded_signal = []
+    for bit in message:
+        if bit == '1':
+            encoded_signal.append('1')
+            encoded_signal.append('0')
+        else:
+            encoded_signal.append('-1')
+            encoded_signal.append('0')
+
+    return encoded_signal
+
+def decodeRZ(signal):
+    decoded_message = []
+    for i in range(0, len(signal), 2):
+        if signal[i] == '1' and  signal[i+1] == '0':
+            decoded_message .append('1')
+        else:
+            decoded_message.append('0')
+
+    return decoded_message
