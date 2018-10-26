@@ -17,9 +17,9 @@ class ApplicationWindow(QtWidgets.QMainWindow):
 
         self.message = []
         self.messageChanged.connect(self.decodeMessage)
-        self.ui = Ui_MainWindow()
+        self.ui = Ui_MainWindow()  
         self.ui.setupUi(self)
-        self.graphSettings()
+        self.graphSettings() 
         self.ui.messageEditBox.returnPressed.connect(self.ui.sendMessageButton.click)
         self.ui.sendMessageButton.clicked.connect(self.refreshSendMessagePage)
 
@@ -53,13 +53,13 @@ class ApplicationWindow(QtWidgets.QMainWindow):
                 for binary_character in binary_code_separated_by_character:
                     message_separated_by_character.append(binToString(binary_character))
 
-                self.message = []
                 self.refreshReceiveMessagePage(message_separated_by_character, graph_title)
-
+                self.message = []
+                
     def refreshReceiveMessagePage(self, decoded_message,graph_title):
         _translate = QtCore.QCoreApplication.translate
         string = ''.join(decoded_message)
-        binary_string = toBin(string, withSpace=False)
+        binary_string = toBin(string, withSpace=True)
         encoded_message = encodeMesage(binary_string, graph_title)
 
         # Repetimos a mensagem no label coreto.
@@ -67,8 +67,11 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         # Colocamos o codigo binario no label correto.
         self.ui.showBinaryLabel1.setText(_translate("MainWindow", binary_string))
          # Colocamos a mesangem codificada no label correto.
-        self.ui.showEncoddLabel1.setText(_translate("MainWindow", ''.join(encoded_message) ))
+        self.ui.showEncoddLabel1.setText(_translate("MainWindow", ' '.join(self.message) ))
         
+
+        binary_string = toBin(string, withSpace=False)
+        encoded_message = encodeMesage(binary_string, graph_title)
         self.setGraphReceiveMessagePage(encoded_message, graph_title)
 
 
@@ -87,24 +90,27 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         elif self.ui.checkBoxRZ.checkState() == QtCore.Qt.Checked:
             graph_title = 'RZ Encoded'
 
-        encoded_message = encodeMesage(binary_string, encode_type=graph_title)
-
-        # Repetimos a mensagem no label coreto.
+        # Mostramos a mensagem no label coreto.
         self.ui.showMessageLabel0.setText(_translate("MainWindow", string))
-        # Colocamos o codigo binario no label correto.
-        self.ui.showBinaryLabel0.setText(_translate("MainWindow", binary_string))
-        # Colocamos a mesangem codificada no label correto.
-        self.ui.showEncodedLabel0.setText(_translate("MainWindow", ''.join(encoded_message) ))
-        
-        self.setGraphSendMessagePage(encoded_message, graph_title)
 
         binary_code_separated_by_character = toBin(string, withSpace=True)
         binary_code_separated_by_character = binary_code_separated_by_character.split()
+
+        # Mostramos o codigo binario no label correto.
+        self.ui.showBinaryLabel0.setText(_translate("MainWindow", ' '.join(binary_code_separated_by_character)))
 
         encoded_message_separated_by_character = []
         for binary_character in binary_code_separated_by_character:
             aux = ''.join(encodeMesage(binary_character, encode_type=graph_title))
             encoded_message_separated_by_character.append(aux)
+
+        # Mostramos a mesangem codificada no label correto.
+        self.ui.showEncodedLabel0.setText(_translate("MainWindow", ' '.join(encoded_message_separated_by_character) ))
+
+        # Mostrar o grafico
+        encoded_message = encodeMesage(binary_string, encode_type=graph_title)
+        self.graphSettings()        
+        self.setGraphSendMessagePage(encoded_message, graph_title)
 
         for encoded_character in encoded_message_separated_by_character:
             sendMessageSocket(encoded_character)
@@ -169,6 +175,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.graphicsView.getAxis('bottom').setPen(axis_pen)
         self.ui.graphicsView.showGrid(x=True, y=True, alpha=1)
         self.ui.graphicsView.getViewBox().setYRange(-3.5,3.5)
+        self.ui.graphicsView.getViewBox().setXRange(0,50)
         self.ui.graphicsView.getViewBox().border = pg.mkPen(color=(0, 0, 0), width=2)
         self.ui.graphicsView.setTitle('Encoded Graphs', color=(0, 0, 0))
 
@@ -182,5 +189,6 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.graphicsView1.getAxis('bottom').setPen(axis_pen)
         self.ui.graphicsView1.showGrid(x=True, y=True, alpha=1)
         self.ui.graphicsView1.getViewBox().setYRange(-3.5,3.5)
+        self.ui.graphicsView1.getViewBox().setXRange(0,50)
         self.ui.graphicsView1.getViewBox().border = pg.mkPen(color=(0, 0, 0), width=2)
         self.ui.graphicsView1.setTitle('Encoded Graphs', color=(0, 0, 0))
