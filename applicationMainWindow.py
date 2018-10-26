@@ -134,7 +134,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
                 ydados.append(int(x))
                 ydados.append(int(x))
 
-        pen = pg.mkPen('g', width=4)
+        pen = pg.mkPen(color=(0, 128, 0), width=4)
         self.ui.graphicsView.clear()
         self.ui.graphicsView.setTitle(graph_title, color=(0, 0, 0))
         self.ui.graphicsView.plot(xdados, ydados, pen=pen)
@@ -157,7 +157,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
                 ydados.append(int(x))
                 ydados.append(int(x))
 
-        pen = pg.mkPen('g', width=4)
+        pen = pg.mkPen(color=(0, 128, 0), width=4)
         self.ui.graphicsView1.clear()
         self.ui.graphicsView1.setTitle(graph_title, color=(0, 0, 0))
         self.ui.graphicsView1.plot(xdados, ydados, pen=pen)
