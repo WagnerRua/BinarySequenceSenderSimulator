@@ -2,7 +2,7 @@ import socket
 
 def serverSocketMode(application):
     ip = 'localhost'
-    port = 65001
+    port = 65002
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind( (ip, port) )
     server.listen(1)
@@ -13,7 +13,7 @@ def serverSocketMode(application):
 
 def sendMessageSocket(message):
     ip = 'localhost'
-    port = 65001
+    port = 65002
     socketobj = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socketobj.connect((ip, port))
     socketobj.send(message.encode('UTF-8'))

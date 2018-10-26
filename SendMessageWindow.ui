@@ -159,6 +159,18 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuSend_Message">
+    <property name="title">
+     <string>Send Message</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuReceived_Message">
+    <property name="title">
+     <string>Receive Message</string>
+    </property>
+   </widget>
+   <addaction name="menuSend_Message"/>
+   <addaction name="menuReceived_Message"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
