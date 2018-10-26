@@ -32,6 +32,49 @@ def toBin(st, withSpace):
 
     return string
 
+def binToString(bits, encoding='utf-8', errors='surrogatepass'):
+    n = int(bits, 2)
+    return n.to_bytes((n.bit_length() + 7) // 8, 'big').decode(encoding, errors) or '\0'
+
+def encodeMesage(binary_message, encode_type):
+    if encode_type == 'NRZ Unipolar Encoded':
+        return binary_message
+    elif encode_type == 'NRZ-Invert Encoded':
+        return encodeNRZInvert(binary_message)
+    elif encode_type == 'NRZ-Level Encoded':
+        return encodeNRZLevel(binary_message)
+    elif encode_type == 'RZ Encoded':
+        return encodeRZ(binary_message)   
+    else:
+        return None
+
+def signalStringToList(signal_string):
+    binary_list = []
+    past_bin = None
+    for bin in signal_string:
+        if bin == '1' and past_bin == '-':
+            binary_list.append('-1')
+        elif bin == '1' and (past_bin == '1' or past_bin == '0' or past_bin == None):
+            binary_list.append('1')
+        elif bin == '0':
+            binary_list.append('0')
+        past_bin = bin
+
+    return binary_list
+
+def decodeMesage(signal_message, decode_type):
+    signal_message = signalStringToList(signal_message)
+    if decode_type == 'NRZ Unipolar Encoded':
+        return signal_message
+    elif decode_type == 'NRZ-Invert Encoded':
+        return decodeNRZInvert(signal_message)
+    elif decode_type == 'NRZ-Level Encoded':
+        return decodeNRZLevel(signal_message)
+    elif decode_type == 'RZ Encoded':
+        return decodeRZ(signal_message)   
+    else:
+        return None
+
 def encodeNRZLevel(message):
     encoded_signal = []
     for bit in message:
@@ -115,3 +158,4 @@ def decodeRZ(signal):
             decoded_message.append('0')
 
     return decoded_message
+

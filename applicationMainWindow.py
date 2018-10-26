@@ -16,6 +16,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         super(ApplicationWindow, self).__init__()
 
         self.message = []
+        self.messageChanged.connect(self.decodeMessage)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.graphSettings()
@@ -24,37 +25,52 @@ class ApplicationWindow(QtWidgets.QMainWindow):
 
     def setMessage(self, value):
         self.message.append(value)
-        self.messageChanged.connect(self.decodeMessage)
         self.messageChanged.emit()
 
     def decodeMessage(self):
+        
+        if len(self.message) != 0:
+            graph_title = None
 
-        if self.message[-1] == 'NRZ Unipolar Encoded':
-            graph_title = self.message[-1]
-            decoded_message = self.message.pop()
-            self.refreshReceiveMessagePage(decoded_message)
-        elif self.message[-1] == 'NRZ-Invert Encoded':
-            graph_title = self.message[-1]
-            decoded_message = decodeNRZInvert(self.message.pop())
-            self.refreshReceiveMessagePage(decoded_message)
-        elif self.message[-1] == 'NRZ-Level Encoded':
-            graph_title = self.message[-1]
-            decoded_message = decodeNRZLevel(self.message.pop())
-            self.refreshReceiveMessagePage(decoded_message)
-        elif self.message[-1] == 'RZ Encoded':
-            graph_title = self.message[-1]
-            decoded_message = decodeRZ(self.message.pop())
-            self.refreshReceiveMessagePage(decoded_message)
+            if self.message[-1] == 'NRZ Unipolar Encoded':
+                graph_title = self.message[-1]
+            elif self.message[-1] == 'NRZ-Invert Encoded':
+                graph_title = self.message[-1]
+            elif self.message[-1] == 'NRZ-Level Encoded':
+                graph_title = self.message[-1]
+            elif self.message[-1] == 'RZ Encoded':
+                graph_title = self.message[-1]
+            
+            if graph_title != None:
+                self.message.pop()
 
-    def refreshReceiveMessagePage(self, decoded_message):
+                binary_code_separated_by_character = []
+                for encoded_character in self.message:
+                    aux = ''.join(decodeMesage(encoded_character, decode_type=graph_title))
+                    binary_code_separated_by_character.append(aux)
+
+                message_separated_by_character = []
+                for binary_character in binary_code_separated_by_character:
+                    message_separated_by_character.append(binToString(binary_character))
+
+                self.message = []
+                self.refreshReceiveMessagePage(message_separated_by_character, graph_title)
+
+    def refreshReceiveMessagePage(self, decoded_message,graph_title):
         _translate = QtCore.QCoreApplication.translate
         string = ''.join(decoded_message)
-        # Covertemos a string que esta na caixa de mensagens para binario.
+        binary_string = toBin(string, withSpace=False)
+        encoded_message = encodeMesage(binary_string, graph_title)
+
         # Repetimos a mensagem no label coreto.
         self.ui.showMessageLabel1.setText(_translate("MainWindow", string))
         # Colocamos o codigo binario no label correto.
         self.ui.showBinaryLabel1.setText(_translate("MainWindow", binary_string))
-        self.setGraphReceiveMessagePage(binary_string,'teste')
+         # Colocamos a mesangem codificada no label correto.
+        self.ui.showEncoddLabel1.setText(_translate("MainWindow", ''.join(encoded_message) ))
+        
+        self.setGraphReceiveMessagePage(encoded_message, graph_title)
+
 
     def refreshSendMessagePage(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -63,17 +79,15 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         
         # Exemplo de como ver se o checkbox está ativo
         if self.ui.checkBoxNRZ.checkState() == QtCore.Qt.Checked:
-            encoded_message = binary_string
             graph_title = 'NRZ Unipolar Encoded'
         elif self.ui.checkBoxNRZ_I.checkState() == QtCore.Qt.Checked:
-            encoded_message = encodeNRZInvert(binary_string)
             graph_title = 'NRZ-Invert Encoded'
         elif self.ui.checkBoxNRZ_L.checkState() == QtCore.Qt.Checked:
-            encoded_message = encodeNRZLevel(binary_string)
             graph_title = 'NRZ-Level Encoded'
         elif self.ui.checkBoxRZ.checkState() == QtCore.Qt.Checked:
-            encoded_message = encodeRZ(binary_string)
             graph_title = 'RZ Encoded'
+
+        encoded_message = encodeMesage(binary_string, encode_type=graph_title)
 
         # Repetimos a mensagem no label coreto.
         self.ui.showMessageLabel0.setText(_translate("MainWindow", string))
@@ -84,8 +98,16 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         
         self.setGraphSendMessagePage(encoded_message, graph_title)
 
-        for signal in encoded_message:
-            sendMessageSocket(signal)
+        binary_code_separated_by_character = toBin(string, withSpace=True)
+        binary_code_separated_by_character = binary_code_separated_by_character.split()
+
+        encoded_message_separated_by_character = []
+        for binary_character in binary_code_separated_by_character:
+            aux = ''.join(encodeMesage(binary_character, encode_type=graph_title))
+            encoded_message_separated_by_character.append(aux)
+
+        for encoded_character in encoded_message_separated_by_character:
+            sendMessageSocket(encoded_character)
         sendMessageSocket(graph_title)
 
     def setGraphSendMessagePage(self, encoded_message, graph_title):
