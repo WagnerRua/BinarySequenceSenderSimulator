@@ -1,7 +1,7 @@
 import socket
 
 def serverSocketMode(application):
-    ip = '0.0.0.0'
+    ip = '192.168.100.10'
     port = 65002
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind( (ip, port) )
@@ -12,7 +12,7 @@ def serverSocketMode(application):
         application.setMessage(msg.decode("utf-8"))
 
 def sendMessageSocket(message):
-    ip = '0.0.0.0'
+    ip = '192.168.100.10'
     port = 65002
     socketobj = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socketobj.connect((ip, port))
@@ -32,7 +32,7 @@ def toBin(st, withSpace):
 
     return string
 
-def binToString(bits, encoding='utf-8', errors='surrogatepass'):
+def binToString(bits, encoding='ISO-8859-1', errors='surrogatepass'):
     n = int(bits, 2)
     return n.to_bytes((n.bit_length() + 7) // 8, 'big').decode(encoding, errors) or '\0'
 

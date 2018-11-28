@@ -175,7 +175,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.graphicsView.getAxis('bottom').setPen(axis_pen)
         self.ui.graphicsView.showGrid(x=True, y=True, alpha=1)
         self.ui.graphicsView.getViewBox().setYRange(-3.5,3.5)
-        self.ui.graphicsView.getViewBox().setXRange(0,50)
+        self.ui.graphicsView.getViewBox().setXRange(0,20)
         self.ui.graphicsView.getViewBox().border = pg.mkPen(color=(0, 0, 0), width=2)
         self.ui.graphicsView.setTitle('Encoded Graphs', color=(0, 0, 0))
 
@@ -189,6 +189,6 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.graphicsView1.getAxis('bottom').setPen(axis_pen)
         self.ui.graphicsView1.showGrid(x=True, y=True, alpha=1)
         self.ui.graphicsView1.getViewBox().setYRange(-3.5,3.5)
-        self.ui.graphicsView1.getViewBox().setXRange(0,50)
+        self.ui.graphicsView1.getViewBox().setXRange(0,20)
         self.ui.graphicsView1.getViewBox().border = pg.mkPen(color=(0, 0, 0), width=2)
         self.ui.graphicsView1.setTitle('Encoded Graphs', color=(0, 0, 0))
