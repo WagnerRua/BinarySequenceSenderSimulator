@@ -1,4 +1,4 @@
-# Binary Sequence Sending Simulator
+# Binary Sequence Sender Simulator
 
 Project developed by the students of the Computer Engineering course of the Federal Technological University of Paraná (UTFPR) for the subject of Computer Networks in the 5th Period.
 
